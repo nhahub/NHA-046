@@ -118,3 +118,39 @@ graph TB
     style H fill:#F44336,color:white
     style I fill:#009688,color:white
 ```
+
+---
+
+## 🔄 Machine Learning Pipeline
+
+### Plant Disease Detection
+1. **Data Collection** - PlantVillage dataset
+2. **Preprocessing** - Image resizing, normalization, augmentation
+3. **Model Training** - Transfer learning with EfficientNet-B0
+4. **Validation** - Cross-validation and hyperparameter tuning
+5. **Deployment** - Docker container on Hugging Face Spaces
+
+### Crop Recommendation
+1. **Data Analysis** - Exploratory data analysis and feature engineering
+2. **Model Selection** - Comparison of multiple ML algorithms
+3. **Training** - Ensemble method optimization
+4. **API Development** - RESTful endpoint creation
+5. **Integration** - Web application deployment
+
+---
+
+## 🚀 Quick Start
+
+### Local Development
+```bash
+# Clone repository
+git clone https://github.com/Mai-22/flora.git
+cd flora
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run application
+python app.py
+
+
