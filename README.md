@@ -97,6 +97,7 @@ All experiments, model versions, and performance metrics are tracked using **MLf
 ---
 
 ## 🏗️ System Architecture
+```mermaid
 graph TB
     A[User] --> B[Web Interface]
     B --> C[FastAPI Backend]
@@ -106,3 +107,14 @@ graph TB
     E --> F
     C --> G[(Supabase Database)]
     H[MLflow Tracking] --> I[(DagsHub Repository)]
+    
+    style A fill:#4CAF50,color:white
+    style B fill:#2196F3,color:white
+    style C fill:#FF9800,color:white
+    style D fill:#9C27B0,color:white
+    style E fill:#9C27B0,color:white
+    style F fill:#607D8B,color:white
+    style G fill:#795548,color:white
+    style H fill:#F44336,color:white
+    style I fill:#009688,color:white
+```
