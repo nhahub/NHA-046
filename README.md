@@ -100,7 +100,7 @@ All experiments, model versions, and performance metrics are tracked using **MLf
 ```mermaid
 graph TB
     A[User] --> B[Web Interface]
-    B --> C[FastAPI Backend]
+    B --> C[Flask Backend]
     C --> D[Plant Disease Model]
     C --> E[Crop Recommendation Model]
     D --> F[(Hugging Face Spaces)]
