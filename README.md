@@ -64,13 +64,14 @@ All experiments, model versions, and performance metrics are tracked using **MLf
 
 ---
 
-## 📈 Model Performance
+## 📈 Models Performance
 
-### Plant Disease Detection
+### Plant Disease Detection 
 | Model | Accuracy | Precision | Recall | F1-Score |
 |-------|----------|-----------|--------|----------|
 | EfficientNet-B0 | 93.5% | 94.8% | 93.5% | 92.3% |
 | ResNet-50 | 91.2% | 92.1% | 91.2% | 90.8% |
+| VGG 16| 90.2% | 87.2% | 91.1% | 85.3% |
 
 ### Crop Recommendation
 | Model | Accuracy | Macro F1 | Weighted F1 |
@@ -139,18 +140,156 @@ graph TB
 
 ---
 
+## 📁 Project Structure (Hugging Face Spaces)
+
+```
+📦 Plant Disease/
+ ┣ 📜 app.py
+ ┣ 📜 score.py
+ ┣ 📜 requirements.txt
+ ┣ 📜 Dockerfile
+ ┣ 📜 categories.json
+ ┣ 📜 best_efficientnet_b0.pth
+ ┗ 📜 README.md
+```
+```
+📦 Crop Recommendation/
+ ┣ 📜 app.py
+ ┣ 📜 score.py
+ ┣ 📜 requirements.txt
+ ┣ 📜 Dockerfile
+ ┣ 📜 label_encoder.pkl
+ ┣ 📜 best_model_XGBoost.pkl
+ ┗ 📜 README.md
+```
+
+---
+
 ## 🚀 Quick Start
 
-### Local Development
 ```bash
-# Clone repository
-git clone https://github.com/Mai-22/flora.git
+git clone <https://github.com/nhahub/NHA-046>
 cd flora
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run application
 python app.py
+```
+---
 
+## ⚡ API Endpoints
 
+### 🔍 1. Plant Disease Detection
+
+**POST** `/predict_disease`
+
+#### Request Body
+
+```json
+{
+  "image": "<uploaded leaf image>"
+}
+```
+
+#### Response 
+
+```json
+{
+  "diagnosis": "status",
+  "confidence": "0.95"
+}
+```
+
+---
+
+### 🌾 2. Crop Recommendation
+
+**POST** `/recommend_crop`
+
+#### Request Body
+
+```json
+{
+  "N": 0,
+  "P": 0,
+  "K": 0,
+  "temperature": 0,
+  "humidity": 0,
+  "ph": 0,
+  "rainfall": 0
+}
+```
+
+#### Response 
+
+```json
+{
+  "recommended_crop": "CROP_NAME"
+}
+```
+
+---
+
+## 🎥 Demo Video
+
+🎬 *Placeholder — Add video link here*
+
+---
+
+## 📦 Deployment
+
+### 🐳 Using Docker
+
+```bash
+# Build image
+docker build -t flora-app .
+
+# Run container
+docker run -p 7860:7860 flora-app
+```
+---
+
+# 🛠️ Technology Stack (Recap)
+
+| Category         | Technologies                   |
+| ---------------- | ------------------------------ |
+| Machine Learning | PyTorch, Scikit-learn, XGBoost |
+| Backend          | FastAPI, Python                |
+| Frontend         | React, Vercel                  |
+| Deployment       | Hugging Face Spaces, Docker    |
+| Data Tracking    | MLflow, DagsHub                |
+| Database         | Supabase                       |
+| Version Control  | Git, GitHub                    |
+
+---
+
+## 🌟 Impact & Use Cases
+
+### 👨‍🌾 For Small-Scale Farmers
+
+* Early disease detection to prevent crop loss
+* Data-driven planting decisions for higher yields
+* Reduced dependency on agricultural experts
+
+### 🌱 For Home Gardeners
+
+* Easy plant health monitoring through mobile photos
+* Optimal crop selection for home gardens
+* Educational resource for plant care
+
+### 🎓 For Agricultural Students
+
+* Practical AI application in agriculture
+* Open-source learning resource
+* Research foundation for agricultural technology
+
+---
+
+## 🔮 Future Enhancements
+
+* Mobile application development
+* Multi-language support for global accessibility
+* Fertilizer recommendation system
+* Soil quality assessment from images
+* Weather integration for predictive analytics
+* Community features for farmer knowledge sharing
+
+---
