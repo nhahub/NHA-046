@@ -1,0 +1,17 @@
+{
+    "model_name": "XGBoost",
+    "test_accuracy": 1.0,
+    "features": [
+        "temp_rain",
+        "ph_rain",
+        "K",
+        "rainfall",
+        "N",
+        "P",
+        "NPK_Avg_Soil_Fertility",
+        "humidity",
+        "NP_Ratio",
+        "THI"
+    ],
+    "training_date": "2025-10-21 08:48:49"
+}
