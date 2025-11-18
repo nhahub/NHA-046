@@ -128,7 +128,7 @@ graph TB
 1. **Data Collection** - PlantVillage dataset
 2. **Preprocessing** - Image resizing, normalization, augmentation
 3. **Model Training** - Transfer learning with EfficientNet-B0
-4. **Validation** - Cross-validation and hyperparameter tuning
+4. **Validation** - freezing some layers
 5. **Deployment** - Docker container on Hugging Face Spaces
 
 ### Crop Recommendation
