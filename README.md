@@ -26,7 +26,9 @@ Our mission is to make agriculture more **accessible, efficient, and sustainable
 | **🚀 Web Application** | Full-stack application with user-friendly interface | [Vercel Deployment](https://flora-81nw.vercel.app/home) |
 
 ---
-
+## 🖼 Front repo 
+ https://github.com/NourHosam/flora
+---
 ## 📊 Model Performance & Experiment Tracking
 
 All experiments, model versions, and performance metrics are tracked using **MLflow** and hosted on **DagsHub**:
@@ -363,8 +365,6 @@ Authorization: Bearer <jwt_token>
 🎬 *Placeholder — Add video link here*
 
 ---
-## Front repo 
- https://github.com/NourHosam/flora
 
 ## 📦 Deployment
 
