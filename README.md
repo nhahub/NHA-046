@@ -233,6 +233,8 @@ python app.py
 🎬 *Placeholder — Add video link here*
 
 ---
+## Front repo 
+ https://github.com/NourHosam/flora
 
 ## 📦 Deployment
 
