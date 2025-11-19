@@ -22,6 +22,7 @@ Our mission is to make agriculture more **accessible, efficient, and sustainable
 |----------|-------------|------|
 | **🌱 Plant Disease Detection** | Upload a leaf image and get instant diagnosis | [Hugging Face Space](https://huggingface.co/spaces/Mai-22/plant-disease-detection) |
 | **🌾 Crop Recommendation** | Input soil/climate parameters for crop suggestions | [Hugging Face Space](https://huggingface.co/spaces/Mai-22/Crop-Recommendation-deployment) |
+| **🔐 Authentication API** | User registration and login | [Hugging Face Space](https://huggingface.co/spaces/SelviaNasser/flora-auth) |
 | **🚀 Web Application** | Full-stack application with user-friendly interface | [Vercel Deployment](https://flora-81nw.vercel.app/home) |
 
 ---
@@ -30,7 +31,9 @@ Our mission is to make agriculture more **accessible, efficient, and sustainable
 
 All experiments, model versions, and performance metrics are tracked using **MLflow** and hosted on **DagsHub**:
 
-🔗 **Experiment Dashboard:** [https://dagshub.com/maimohamed201526/plant-disease-project](https://dagshub.com/maimohamed201526/plant-disease-project)
+🔗 **Plant Disease Detection Experiments Dashboard:** [https://dagshub.com/maimohamed201526/plant-disease-project](https://dagshub.com/maimohamed201526/plant-disease-project)
+
+🔗 **Crop Recommendation Experiments Dashboard:** [https://dagshub.com/selvia.nasser19/crop-recommendation](https://dagshub.com/selvia.nasser19/crop-recommendation)
 
 ---
 
@@ -168,21 +171,80 @@ graph TB
 ## 🚀 Quick Start
 
 ```bash
+# Clone the repository
 git clone <https://github.com/nhahub/NHA-046>
 cd flora
+
 pip install -r requirements.txt
 python app.py
+
+# Set up environment
+cp Database/.env
+# Edit .env with your Supabase credentials
+# Copy and run Database/setup.sql
 ```
 ---
 
 ## ⚡ API Endpoints
 
-### 🔍 1. Plant Disease Detection
+### 🔐 1. Authentication Service
 
-**POST** `/predict_disease`
+**POST** `/register`
 
 #### Request Body
+```json
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "full_name": "User Name"
+}
+```
 
+#### Response 
+```json
+{
+  "success": true,
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "id": "uuid",
+    "email": "user@example.com",
+    "full_name": "User Name"
+  }
+}
+```
+
+---
+
+**POST** `/login`
+
+#### Request Body
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+#### Response 
+```json
+{
+  "success": true,
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "id": "uuid", 
+    "email": "user@example.com",
+    "full_name": "User Name"
+  }
+}
+```
+
+---
+
+### 🔍 2. Plant Disease Detection
+
+**POST** `/predict`
+
+#### Request Body
 ```json
 {
   "image": "<uploaded leaf image>"
@@ -190,42 +252,110 @@ python app.py
 ```
 
 #### Response 
-
 ```json
 {
-  "diagnosis": "status",
-  "confidence": "0.95"
+  "status": "Healthy",
+  "overall_confidence": 0.87,
+  "disease": "No Disease",
+  "is_healthy": true,
+  "treatment": "No treatment needed. Your plant is healthy!",
+  "prevention": "Continue with current care routine.",
+  "confidence_level": "High",
+  "suitability": "87.0%",
+  "saved_to_database": true,
+  "image_url": "https://storage-url/image.jpg"
 }
 ```
 
 ---
 
-### 🌾 2. Crop Recommendation
+**GET** `/history`
 
-**POST** `/recommend_crop`
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
 
-#### Request Body
-
+#### Response 
 ```json
 {
-  "N": 0,
-  "P": 0,
-  "K": 0,
-  "temperature": 0,
-  "humidity": 0,
-  "ph": 0,
-  "rainfall": 0
+  "success": true,
+  "history": [
+    {
+      "id": "uuid",
+      "image_url": "https://storage-url/image1.jpg",
+      "disease_detected": "Healthy",
+      "is_healthy": true,
+      "confidence": 0.87,
+      "created_at": "2025-10-31T13:39:59.000Z"
+    }
+  ],
+  "count": 1
+}
+```
+
+---
+
+### 🌾 3. Crop Recommendation
+
+**POST** `/recommend`
+
+#### Request Body
+```json
+{
+  "nitrogen": 50,
+  "phosphorus": 40,
+  "potassium": 30,
+  "temperature": 25,
+  "humidity": 70,
+  "ph": 6.5,
+  "rainfall": 120
 }
 ```
 
 #### Response 
-
 ```json
 {
-  "recommended_crop": "CROP_NAME"
+  "crop": "coffee",
+  "confidence": 0.073,
+  "suitability": "7.3%",
+  "saved_to_database": true,
+  "input_summary": {
+    "nitrogen": 50,
+    "phosphorus": 40,
+    "potassium": 30,
+    "temperature": 25,
+    "humidity": 70,
+    "ph": 6.5,
+    "rainfall": 120
+  }
 }
 ```
 
+---
+
+**GET** `/history`
+
+#### Headers
+```
+Authorization: Bearer <jwt_token>
+```
+
+#### Response 
+```json
+{
+  "success": true,
+  "history": [
+    {
+      "id": "uuid",
+      "recommended_crop": "coffee",
+      "match_percentage": 7.3,
+      "created_at": "2025-10-31T13:39:59.000Z"
+    }
+  ],
+  "count": 1
+}
+```
 ---
 
 ## 🎥 Demo Video
