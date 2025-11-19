@@ -74,9 +74,9 @@ All experiments, model versions, and performance metrics are tracked using **MLf
 ### Plant Disease Detection 
 | Model | Accuracy | Precision | Recall | F1-Score |
 |-------|----------|-----------|--------|----------|
-| EfficientNet-B0 | 93.5% | 94.8% | 93.5% | 92.3% |
-| ResNet-50 | 91.2% | 92.1% | 91.2% | 90.8% |
-| VGG 16| 90.2% | 87.2% | 91.1% | 85.3% |
+| EfficientNet-B0 | 95.14% | 96.10% | 95.14% | 94.40% |
+| ResNet-50 | 94.06% | 93.49% | 94.06% | 93.19% |
+| VGG 16| 89.58 % |  88.59% | 89.58% | 87.97% |
 
 ### Crop Recommendation
 | Model | Accuracy | Macro F1 | Weighted F1 |
